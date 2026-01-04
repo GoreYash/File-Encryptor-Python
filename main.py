@@ -17,24 +17,24 @@ def derive_key(password, salt):
     return base64.urlsafe_b64encode(kdf.derive(password))
 
 def encryptFile(f, key):
-    with open(f,'rb') as file:
-        data = file.read()
-        fer = Fernet(key)
-        data = fer.encrypt(data)
-    
-    with open(f, 'wb') as file:
-        file.write(data)
-    return True
+    try:
+        with open(f,'rb') as file:
+            data = file.read()
+            fer = Fernet(key)
+            data = fer.encrypt(data)
+        with open(f, 'wb') as file:
+            file.write(data)
+        return True
+    except Exception:
+        return False
 
 def decryptFile(f, key):
     try:
         with open(f,'rb') as file:
-
             data = file.read()
             fer = Fernet(key)
             data = fer.decrypt(data)
             
-
         with open(f, 'wb') as file:
             file.write(data)
         return True
@@ -51,6 +51,12 @@ if key:
     i = int(input("1) Encrypt\n2) Decrypt\nEnter a choice: "))
     match(i):
         case 1:
-            encryptFile(f,key)
+            if encryptFile(f,key):
+                print("Successfully decrypted")
+            else:
+                print("Error")
         case 2:
-            decryptFile(f,key)
+            if decryptFile(f,key):
+                print("Successfully decrypted")
+            else:
+                print("Error")
