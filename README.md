@@ -26,8 +26,8 @@ A professional-grade file security utility built in Python. This tool provides r
 ## ⚠️ Important Security Note
 This tool relies on the X.salt file.
 
-DO NOT delete X.salt.
+**DO NOT** delete X.salt.
 
-DO NOT share your Master Password. If either is lost, the data is mathematically impossible to recover.
+**DO NOT** share your Master Password. If either is lost, the data is mathematically impossible to recover.
 
 Developed as part of my BTech IT Portfolio.
